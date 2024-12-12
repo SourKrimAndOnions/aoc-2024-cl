@@ -52,15 +52,14 @@
 ;; Analyze the unusual data from the engineers. How many reports are
 ;; safe?
 (in-package #:aoc-2024.day2)
-(defparameter *day2-repo* (asdf:system-relative-pathname :aoc-2024 #p"day2"))
 (defun read-reports (filename)
   (with-open-file (stream filename)
     (loop for line = (read-line stream nil nil)
           while line
           collect (with-input-from-string (s line)
-                   (loop for num = (read s nil nil)
-                         while num
-                         collect num)))))
+                    (loop for num = (read s nil nil)
+                          while num
+                          collect num)))))
 
 (defun valid-change-p (a b)
   (let ((diff (abs  (- a b))))
@@ -121,7 +120,6 @@
 ;; Update your analysis by handling situations where the Problem Dampener can remove a single level from unsafe reports. How many reports are now safe?
 
 (defun remove-nth (n list)
-  "Remove the nth element from list"
   (append (subseq list 0 n)
           (subseq list (1+ n))))
 

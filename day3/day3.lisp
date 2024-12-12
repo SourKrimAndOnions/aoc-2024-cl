@@ -72,7 +72,7 @@
                                  (find-muls-rec (subseq rest-str 0)))))))))))
     (find-muls-rec input)))
 
-(defun solve (input)
+(defun solve-day3 (input)
   (let* ((input-str (str:collapse-whitespaces (alexandria:read-file-into-string input))))
     (reduce #'+ (find-muls input-str) :initial-value 0)))
 ;; wrong answer
@@ -106,7 +106,7 @@
 
 ;; Handle the new instructions; what do you get if you add up all of
 ;; the results of just the enabled multiplications?
-(defun solve-part2 (input)
+(defun solve-day3-part2 (input)
   (let* ((input-str (str:collapse-whitespaces (alexandria:read-file-into-string input)))
          (sections (str:split "do()" input-str))
          (enabled-sections (mapcar (lambda (s) 

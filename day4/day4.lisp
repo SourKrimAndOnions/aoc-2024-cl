@@ -49,7 +49,7 @@
            (answer (length paths)))
       (visualize-paths grid paths word))))
 
-(defun word-search (filename word)
+(defun solve-day4 (filename word)
   (let* ((grid (read-input filename))
          (paths (find-all-paths grid word))
          (answer (length paths)))
@@ -122,7 +122,7 @@
                 (push (append diag1 diag2) paths)))))))
     paths))
 
-(defun word-search2 (filename)
+(defun solve-day4-part2 (filename)
   (let* ((grid (read-input filename))
          (paths (find-x-mas-patterns grid))
          (answer (length paths)))

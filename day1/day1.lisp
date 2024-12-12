@@ -3,7 +3,7 @@
 ;;add the diffs
 ;;read read input
 (in-package #:aoc-2024.day1)
-(defparameter *day1-repo* (asdf:system-relative-pathname :aoc-2024 #p"day1"))
+
 (defun read-number-pairs (filename)
   (with-open-file (stream filename)
     (loop for left = (read stream nil nil)
@@ -70,3 +70,10 @@
           (right-list (sort r #'<)))
       (loop for left in left-list
             sum (* left (count left right-list))))))
+
+(defun test-input ()
+  (merge-pathnames (asdf:system-relative-pathname :aoc-2024 #p"day1/") #p"test-input.txt"))
+
+(defun puzzle-input ()
+  (merge-pathnames (asdf:system-relative-pathname :aoc-2024 #p"day1/") #p"input.txt"))
+

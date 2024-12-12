@@ -1,4 +1,3 @@
-;;; ewcia.asd
 (asdf:defsystem #:aoc-2024
   :description "Advent of code 2024 shenanigans"
   :author "Karim Vedelkvist"
@@ -8,7 +7,8 @@
   :depends-on (#:alexandria
                #:str
                #:fiveam)
-  :components ((:module "day1"
+  :components ((:file "package")
+               (:module "day1"
                 :components
                 ((:file "package")
                  (:file "day1")))
@@ -23,7 +23,11 @@
                (:module "day4"
                 :components
                 ((:file "package")
-                 (:file "day4"))))
+                 (:file "day4")))
+               (:module "day5"
+                :components
+                ((:file "package")
+                 (:file "day5"))))
   :in-order-to ((test-op (test-op "aoc-2024/tests"))))
 
 
@@ -31,9 +35,12 @@
   :serial t
   :depends-on (#:aoc-2024
                #:fiveam)
-  :components ((:module "tests"
-                :components
-                ((:file "main"))))
+  :components ((:file "test")
+               (:file "day1/test")
+               (:file "day2/test")
+               (:file "day3/test")
+               (:file "day4/test")
+               (:file "day5/test"))
   :perform (asdf:test-op (o c) 
-                         (symbol-call :fiveam '#:run! :aoc-2024-test-suite)))
+                         (uiop:symbol-call :fiveam '#:run! :aoc-2024-test-suite)))
 
